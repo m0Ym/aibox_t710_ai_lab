@@ -1,0 +1,11 @@
+安装环境依赖：
+cd ~/work/PaddleDetection && pip config set global.index-url https://mirror.baidu.com/pypi/simple && pip install --upgrade pip && pip install -r requirements.txt && python setup.py install && python ppdet/modeling/tests/test_architectures.py
+
+解压数据集：
+cd ~/ && unzip -o data/data60/test.zip -d data/data60/ && unzip -o data/data60/training.zip -d data/data60
+
+启动模型训练：
+cd ~/work/faceKeyPoint/ && python train.py
+
+模型推理：
+cd ~/work/faceKeyPoint/ && python deploy.py

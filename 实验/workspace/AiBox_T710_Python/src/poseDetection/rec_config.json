@@ -1,0 +1,12 @@
+{
+ "model_name": "tinypose",
+ "task_type": "build",
+ "model_type": "paddle",
+ "model_path": "/home/aistudio/work/PaddleDetection/best_output_inference/tinypose_128x96",
+ "model_file": "model.pdmodel",
+ "param_file": "model.pdiparams",
+ "output_path": "/home/aistudio/work/PaddleDetection/best_output_inference/tinypose_128x96",
+ "input_spec": {
+  "image": [1,3,128,96]
+ }
+}

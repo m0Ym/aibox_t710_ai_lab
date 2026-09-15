@@ -1,0 +1,12 @@
+{
+    "model_name": "faceKeypoint",
+    "task_type": "build",
+    "model_type": "paddle",
+    "model_path": "/home/aistudio/work/faceKeyPoint/model",
+    "model_file": "model.pdmodel",
+    "param_file": "model.pdiparams",
+    "output_path": "/home/aistudio/work/faceKeyPoint/model",
+    "input_spec": {
+     "inputs": [1,3,96,96]
+    }
+}

@@ -1,0 +1,20 @@
+安装环境依赖：
+cd ~/work/PaddleDetection && pip config set global.index-url https://mirror.baidu.com/pypi/simple && pip install --upgrade pip && pip install -r requirements.txt && python setup.py install && python ppdet/modeling/tests/test_architectures.py
+
+解压数据集：
+cd ~/work/PaddleDetection && unzip -q /home/aistudio/data/data4336/wider_face_split.zip -d dataset/wider_face/ && unzip -q /home/aistudio/data/data4336/WIDER_val.zip -d dataset/wider_face/ && unzip -q /home/aistudio/data/data4336/WIDER_test.zip -d dataset/wider_face/ && unzip -q /home/aistudio/data/data4336/WIDER_train.zip -d dataset/wider_face/
+
+设置GPU单卡训练：
+export CUDA_VISIBLE_DEVICES=0
+
+启动训练文件开始训练：
+cd ~/work/PaddleDetection && python tools/train.py -c configs/face_detection/blazeface_1000e.yml
+
+模型推理：
+cd ~/work/PaddleDetection && python tools/infer.py -c configs/face_detection/blazeface_1000e.yml \-o weights=output/blazeface_1000e/model_final.pdparams \--infer_img=demo/test.jpg
+cd ~/work/PaddleDetection && python tools/infer.py -c configs/face_detection/blazeface_1000e.yml \-o weights=output/blazeface_1000e/21.pdparams \--infer_img=demo/test.jpg
+
+模型导出：
+cd ~/work/PaddleDetection && python tools/export_model.py -c configs/face_detection/blazeface_1000e.yml \--output_dir=./inference_model \-o weights=output/blazeface_1000e/model_final.pdparams
+
+cd ~/work/PaddleDetection && python tools/export_model.py -c configs/face_detection/blazeface_1000e.yml \--output_dir=./inference_model \-o weights=https://paddledet.bj.bcebos.com/models/blazeface_1000e.pdparams

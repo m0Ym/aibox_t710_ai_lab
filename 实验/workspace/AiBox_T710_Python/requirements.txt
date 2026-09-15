@@ -1,0 +1,9 @@
+numpy
+opencv-python
+Pillow
+pygame
+pyserial
+keyboard
+pyaudio
+pytest
+requests

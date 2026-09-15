@@ -1,0 +1,27 @@
+环境依赖安装：
+cd ~/work/PaddleDetection && pip config set global.index-url https://mirror.baidu.com/pypi/simple && pip install --upgrade pip && pip install -r requirements.txt && python setup.py install && python ppdet/modeling/tests/test_architectures.py
+
+加载并且处理数据集：
+wget -P /home/aistudio/data/ https://bj.bcebos.com/v1/paddledet/data/keypoint/coco_val_person_mini.tar && tar -xf /home/aistudio/data/coco_val_person_mini.tar -C /home/aistudio/work/PaddleDetection/dataset/ && mv /home/aistudio/work/PaddleDetection/dataset/coco_val_person_mini/* /home/aistudio/work/PaddleDetection/dataset/coco && cp /home/aistudio/work/PaddleDetection/dataset/coco/annotations/aic_coco_train_cocoformat.json /home/aistudio/work/PaddleDetection/dataset/ && cp /home/aistudio/work/PaddleDetection/dataset/coco/annotations/instances_val2017.json /home/aistudio/work/PaddleDetection/dataset/coco/annotations/person_keypoints_val2017.json
+
+行人检测模型训练：
+cd ~/work/PaddleDetection && python tools/train.py -c configs/picodet/legacy_model/application/pedestrian_detection/picodet_s_192_pedestrian.yml --eval
+
+人体关键点检测模型训练：
+cd ~/work/PaddleDetection && python tools/train.py -c configs/keypoint/tiny_pose/tinypose_128x96.yml --eval
+
+导出行人检测模型：
+cd ~/work/PaddleDetection && python3 tools/export_model.py -c configs/picodet/application/pedestrian_detection/picodet_s_192_lcnet_pedestrian.yml \--output_dir=output_inference \-o weights=output/picodet_s_192_pedestrian/best_model.pdparams
+
+导出人体关键点检测模型：
+cd ~/work/PaddleDetection && python3 tools/export_model.py -c configs/keypoint/tiny_pose/tinypose_128x96.yml \--output_dir=output_inference \-o weights=output/tinypose_128x96/best_model.pdparams
+
+导出官方行人检测模型：
+cd ~/work/PaddleDetection && python3 tools/export_model.py -c configs/picodet/application/pedestrian_detection/picodet_s_192_lcnet_pedestrian.yml \--output_dir=best_output_inference \-o weights=https://bj.bcebos.com/v1/paddledet/models/keypoint/tinypose_enhance/picodet_s_192_lcnet_pedestrian.pdparams
+
+导出官方人体关键点检测模型：
+cd ~/work/PaddleDetection && python3 tools/export_model.py -c configs/keypoint/tiny_pose/tinypose_128x96.yml \--output_dir=best_output_inference \-o weights=https://bj.bcebos.com/v1/paddledet/models/keypoint/tinypose_enhance/tinypose_128x96.pdparams
+
+模型推理：
+python /home/aistudio/work/deploy.py
+
