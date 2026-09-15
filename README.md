@@ -1,6 +1,6 @@
 # AiBox T710 嵌入式人工智能实验项目
 
-> 人工智能应用与实践课程的代码与报告合集，基于 AiBox T710 嵌入式 AI 实验箱，
+> 人工智能应用与实践课程的实验代码，基于 AiBox T710 嵌入式 AI 实验箱，
 > 涵盖目标检测、人脸检测与关键点、人体姿态估计、语音识别与交互、相机标定、
 > 机械臂控制等实验，Python + OpenCV + PaddlePaddle + pygame。
 
@@ -49,7 +49,6 @@
 │           │   └── models/       # 模型文件（已 gitignore）
 │           ├── requirements.txt
 │           └── README_SIM.md     # 模拟器运行说明
-├── 报告/                        # 实验报告（Word）
 └── README.md
 ```
 
